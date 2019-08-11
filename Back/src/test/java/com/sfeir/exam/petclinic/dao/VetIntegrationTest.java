@@ -17,6 +17,7 @@ import com.sfeir.exam.petclinic.domain.Vet;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:/META-INF/spring/applicationContext.xml")
 public class VetIntegrationTest {
 
 	private VetDataOnDemand dod;

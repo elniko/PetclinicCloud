@@ -46,14 +46,14 @@ public class PetControllerTest {
 	public void testShowPet() throws Exception {
 		// GIVEN
 		final Pet expectedPet = new Pet();
-		expectedPet.setId(-1L);
-		expectedPet.setName("Dog :" + -1L);
+		expectedPet.setId(1L);
+		expectedPet.setName("Dog :" + 1L);
 
 		when(mockPetDao.findPet(1L)).thenReturn(expectedPet);
 		final MockMvc mockMvc = standaloneSetup(controller).build();
 
 		// WHEN
-		mockMvc.perform(get("/pets/" + -1L))
+		mockMvc.perform(get("/pets/" + 1L))
 				.andExpect(view().name("pets/show"))
 				.andExpect(model().attributeExists("pet"))
 				.andExpect(model().attribute("pet", expectedPet));
