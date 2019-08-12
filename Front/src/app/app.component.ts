@@ -23,10 +23,10 @@ export class AppComponent implements  OnInit{
   ngOnInit():void {
 
     this.items = [
-      {label: 'Visits', icon: 'fa fa-fw fa-bar-chart', routerLink: "visits"},
-      {label: 'Pets', icon: 'fa fa-fw fa-calendar', routerLink: "pets"},
-      {label: 'Vets', icon: 'fa fa-fw fa-book', routerLink: "vets"},
-      {label: 'Owners', icon: 'fa fa-fw fa-support',routerLink: "owners"},
+      {label: 'Visits', icon: 'pi pi-calendar-plus', routerLink: "visits"},
+      {label: 'Pets', icon: 'pi pi-android', routerLink: "pets"},
+      {label: 'Vets', icon: 'pi pi-user-plus', routerLink: "vets"},
+      {label: 'Owners', icon: 'pi pi-user',routerLink: "owners"},
     ];
 
     this.setActiveItem(this.router.url);

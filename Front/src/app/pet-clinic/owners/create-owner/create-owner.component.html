@@ -1,0 +1,31 @@
+<div>
+  <h3>Create a new owner</h3>
+  <form [formGroup]="ownerGroup">
+    <div class="form-row">
+      <input type="text" pInputText placeholder="First name" formControlName="firstName">
+    </div>
+    <div class="form-row">
+      <input type="text" pInputText placeholder="Last name" formControlName="lastName">
+    </div>
+    <div class="form-row">
+      <input type="text" pInputText placeholder="Address" formControlName="address">
+    </div>
+    <div class="form-row">
+      <input type="text" pInputText placeholder="City" formControlName="city">
+    </div>
+    <div class="form-row">
+      <p-calendar formControlName="birthDate" placeholder="Birth date" [showIcon]="true"></p-calendar>
+    </div>
+    <div class="form-row">
+      <input type="text" pInputText placeholder="Homepage" formControlName="homepage">
+    </div>
+    <div class="form-row">
+      <input type="text" pInputText placeholder="Email" formControlName="email">
+    </div>
+    <div class="form-row">
+      <input pInputText formControlName="telephone" placeholder="Telephone" />
+    </div>
+    <p-button icon="pi pi-check" label="Submit" (click)="onSubmit()"></p-button>&nbsp;
+    <button pButton type="reset" label="Reset" class="ui-button-secondary"></button>
+  </form>
+</div>
