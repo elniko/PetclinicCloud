@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
 
 
 
@@ -36,7 +37,8 @@ import {ButtonModule} from 'primeng/button';
     ReactiveFormsModule,
     InputTextModule,
     CalendarModule,
-    ButtonModule
+    ButtonModule,
+    TableModule
   ]
 })
 export class PetClinicModule { }

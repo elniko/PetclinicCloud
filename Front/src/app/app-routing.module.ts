@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OwnerResolver } from './pet-clinic/OwnerResolver';
 import { CreateOwnerComponent } from './pet-clinic/owners/create-owner/create-owner.component';
 import { ListOwnerComponent } from './pet-clinic/owners/list-owner/list-owner.component';
 import { OwnersComponent } from './pet-clinic/owners/owners.component';
@@ -21,6 +22,13 @@ const routes: Routes = [
       {
         path: 'new',
         component: CreateOwnerComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: CreateOwnerComponent,
+        resolve: {
+          owner: OwnerResolver
+        }
       },
       {
         path: '',
