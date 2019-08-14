@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-pets',
@@ -9,7 +10,12 @@ export class PetsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  items: MenuItem[];
 
+  ngOnInit() {
+    this.items = [
+      {label: 'List all pets', icon: 'pi pi-fw pi-list', routerLink : "."},
+      {label: 'Create new pet', icon: 'pi pi-fw pi-plus', routerLink : "new"},
+    ];
+  }
 }

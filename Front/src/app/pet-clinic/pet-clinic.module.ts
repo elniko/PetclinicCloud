@@ -22,6 +22,8 @@ import { VisitsComponent } from './visits/visits.component';
 import { CreateVetComponent } from './vets/create-vet/create-vet.component';
 import { ListVetComponent } from './vets/list-vet/list-vet.component';
 import {DropdownModule} from 'primeng/dropdown';
+import { CreatePetComponent } from './pets/create-pet/create-pet.component';
+import { ListPetComponent } from './pets/list-pet/list-pet.component';
 
 
 
@@ -37,6 +39,8 @@ import {DropdownModule} from 'primeng/dropdown';
     VisitsComponent,
     CreateVetComponent,
     ListVetComponent,
+    CreatePetComponent,
+    ListPetComponent,
 
   ],
   imports: [

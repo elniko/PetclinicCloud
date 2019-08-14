@@ -4,6 +4,8 @@ import { CreateOwnerComponent } from './pet-clinic/owners/create-owner/create-ow
 import { ListOwnerComponent } from './pet-clinic/owners/list-owner/list-owner.component';
 import { OwnersComponent } from './pet-clinic/owners/owners.component';
 import { OwnersResolver } from './pet-clinic/owners/owners.resolver';
+import { CreatePetComponent } from './pet-clinic/pets/create-pet/create-pet.component';
+import { ListPetComponent } from './pet-clinic/pets/list-pet/list-pet.component';
 import {PetsComponent} from "./pet-clinic/pets/pets.component";
 import { CreateVetComponent } from './pet-clinic/vets/create-vet/create-vet.component';
 import { ListVetComponent } from './pet-clinic/vets/list-vet/list-vet.component';
@@ -14,7 +16,20 @@ import { VisitsComponent } from './pet-clinic/visits/visits.component';
 
 
 const routes: Routes = [
-  { path: 'pets', component: PetsComponent },
+  {
+    path: 'pets',
+    component: PetsComponent,
+    children: [
+      {
+        path: '',
+        component: ListPetComponent
+      }  ,
+      {
+        path: 'new',
+        component: CreatePetComponent
+      }
+    ]
+  },
   {
     path: 'vets',
     component: VetsComponent,
