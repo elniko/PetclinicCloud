@@ -31,7 +31,7 @@ public class PetRestController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@Valid Pet pet, BindingResult result) {
+    public void create(@RequestBody @Valid Pet pet, BindingResult result) {
         if (pet == null)
             throw new IllegalArgumentException("A pet is required");
         if (result.hasErrors()) {
@@ -60,7 +60,7 @@ public class PetRestController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public void update(@Valid Pet pet, BindingResult result) {
+    public void update(@RequestBody @Valid Pet pet, BindingResult result) {
         if (pet == null)
             throw new IllegalArgumentException("A pet is required");
         if (result.hasErrors()) {
