@@ -20,10 +20,10 @@ public class Owner extends AbstractPerson {
     }
     
     
-    public String toString() {
-        StringBuilder sb = new StringBuilder(getFirstName()).append(" ");
-        sb.append(getLastName());
-        return sb.toString();
-    }
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder(getFirstName()).append(" ");
+//        sb.append(getLastName());
+//        return sb.toString();
+//    }
     
 }

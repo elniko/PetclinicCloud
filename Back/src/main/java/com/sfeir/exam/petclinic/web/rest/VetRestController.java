@@ -28,7 +28,7 @@ public class VetRestController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@Valid Vet vet, BindingResult result) {
+    public void create(@Valid @RequestBody Vet vet, BindingResult result) {
         if (vet == null)
             throw new IllegalArgumentException("A vet is required");
         if (result.hasErrors()) {
@@ -60,7 +60,7 @@ public class VetRestController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public void update(@Valid Vet vet, BindingResult result) {
+    public void update(@RequestBody @Valid Vet vet, BindingResult result) {
         if (vet == null)
             throw new IllegalArgumentException("A vet is required");
 
