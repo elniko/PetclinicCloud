@@ -4,15 +4,9 @@ import com.sfeir.exam.petclinic.dao.OwnerDao;
 import com.sfeir.exam.petclinic.dao.PetDao;
 import com.sfeir.exam.petclinic.domain.Owner;
 import com.sfeir.exam.petclinic.domain.Pet;
-import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -86,40 +80,4 @@ public class OwnerRestController {
 		return petDao.findAllPets();
 	}
 
-	Converter<Owner, String> getOwnerConverter() {
-		return new Converter<Owner, String>() {
-			public String convert(Owner owner) {
-				return new StringBuilder().append(owner.getFirstName())
-						.append(" ").append(owner.getLastName()).append(" ")
-						.append(owner.getAddress()).toString();
-			}
-		};
-	}
-
-	Converter<Pet, String> getPetConverter() {
-		return new Converter<Pet, String>() {
-			public String convert(Pet pet) {
-				return new StringBuilder().append(pet.getName()).append(" ")
-						.append(pet.getWeight()).toString();
-			}
-		};
-	}
-
-	@InitBinder
-	void registerConverters(WebDataBinder binder) {
-		if (binder.getConversionService() instanceof GenericConversionService) {
-			GenericConversionService conversionService = (GenericConversionService) binder
-					.getConversionService();
-			conversionService.addConverter(getOwnerConverter());
-			conversionService.addConverter(getPetConverter());
-		}
-	}
-
-	public void setOwnerDao(OwnerDao ownerDao) {
-		this.ownerDao = ownerDao;
-	}
-
-	public void setPetDao(PetDao petDao) {
-		this.petDao = petDao;
-	}
 }
