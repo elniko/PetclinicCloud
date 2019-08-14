@@ -1,4 +1,4 @@
-export interface Owner {
+export interface Vet {
   id: number;
   firstName: string;
   lastName: string;
@@ -8,5 +8,7 @@ export interface Owner {
   homePage: string;
   email: string;
   birthDay: Date;
-  version: number;
+  specialty: string;
+  employedSince: Date;
+  version: null;
 }

@@ -1,48 +1,37 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Error } from 'tslint/lib/error';
+import { Links } from '../links';
 import { Owner } from '../model/Owner';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
-})
+              providedIn: 'root'
+            })
 export class OwnersService {
 
-  constructor() { }
-
-   testOwners: Owner[] = [{
-     id:1,
-     firstName:'Bob',
-     lastName: 'Jackson',
-     telephone: '77777',
-     birthDate: new Date(),
-     homePage: '',
-     address: 'street 22',
-     email: 'mail@mail.com',
-     city: 'London'
-   }];
-
-
-  getOwners() {
-    return this.testOwners;
+  constructor(private http: HttpClient) {
   }
 
-  addOwner(owner: Owner) {
-    if(owner.id === null) {
-      this.testOwners.push(owner);
+  baseUrl = Links.backend + '/api/owners';
+
+  getOwners(): Observable<Owner[]> {
+    return this.http.get<Owner[]>(this.baseUrl);
+  }
+
+  addOwner(owner: Owner) : Observable<any> {
+    if (owner.id === null) {
+      return this.http.post(this.baseUrl, owner, {observe: 'response'})
     } else {
-      let oldOwner = this.getOwnerById(owner.id);
-      if(!oldOwner) throw new Error();
-      Object.assign(oldOwner, owner);
+      return this.http.put(this.baseUrl, owner);
     }
   }
 
-  getOwnerById(id: number): Owner {
-    return this.testOwners.find(owner=> owner.id === id);
+  getOwnerById(id: number): Observable<Owner> {
+    return this.http.get<Owner>(this.baseUrl+ '/' + id);
   }
 
-  removeOwnerById(id: number) {
-    const index = this.testOwners.findIndex(owner=> owner.id === id);
-    this.testOwners.splice(index, 1);
+  removeOwnerById(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl+'/' +id);
   }
 
 

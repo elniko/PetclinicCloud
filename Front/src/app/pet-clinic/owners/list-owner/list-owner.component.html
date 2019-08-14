@@ -6,7 +6,7 @@
       <th>City</th>
       <th>Telephone</th>
       <th>Email</th>
-      <th>Actions</th>
+      <th></th>
 
     </tr>
   </ng-template>
@@ -18,8 +18,8 @@
       <td>{{owner.telephone}}</td>
       <td>{{owner.email}}</td>
       <td>
-        <span><a [routerLink]="['edit/'+owner.id]" >Edit</a></span>&nbsp;
-        <span><a (click)="remove(owner.id)">Remove</a></span>
+        <span><a [routerLink]="['edit/'+owner.id]" ><i class="pi pi-pencil"></i></a></span>&nbsp;
+        <span><a (click)="remove(owner.id)"><i class="pi pi-times"></i></a></span>
       </td>
     </tr>
   </ng-template>

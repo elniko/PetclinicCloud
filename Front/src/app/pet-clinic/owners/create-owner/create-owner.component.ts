@@ -23,28 +23,36 @@ export class CreateOwnerComponent implements OnInit {
     firstName: null,
     lastName: null,
     address: null,
-    birthDate: null,
+    birthDay: null,
     city: null,
     email: null,
-    homepage: null,
-    telephone: null
+    homePage: null,
+    telephone: null,
+    version: null
   };
 
   ownerGroup: FormGroup;
 
   ngOnInit() {
 
-    this.route.data.subscribe(data => Object.assign(this.data, data.owner) );
+    this.route.data.subscribe(data => {
+      if(!data.owner) return;
+      let owner: Owner = data.owner;
+      owner.birthDay = new Date(owner.birthDay);
+      Object.assign(this.data, owner);
+    });
+
     this.ownerGroup = new FormGroup(
       {
         id: new FormControl(this.data.id),
         firstName: new FormControl(this.data.firstName, Validators.required),
         lastName: new FormControl(this.data.lastName, Validators.required),
         address: new FormControl(this.data.address),
-        birthDate: new FormControl(this.data.birthDate),
+        birthDay: new FormControl(this.data.birthDay, Validators.required),
         city: new FormControl(this.data.city),
+        version: new FormControl(this.data.version),
         email: new FormControl(this.data.email, [Validators.required, Validators.email]),
-        homepage: new FormControl(this.data.homepage),
+        homePage: new FormControl(this.data.homePage),
         telephone: new FormControl(this.data.telephone, Validators.pattern("[0-9]*")),
       });
 
@@ -54,8 +62,13 @@ export class CreateOwnerComponent implements OnInit {
 
   onSubmit() {
     if(this.ownerGroup.valid) {
-      this.ownersService.addOwner(this.ownerGroup.value);
-      this.router.navigate(['/owners']);
+      this.ownersService
+          .addOwner(this.ownerGroup.value)
+          .subscribe(resp => {
+            console.log(resp);
+            this.router.navigate(['/owners']);
+          });
+
     }
 
   }

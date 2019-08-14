@@ -1,6 +1,6 @@
 <div>
-  <h3>Create a new owner</h3>
-  <form [formGroup]="ownerGroup">
+  <h3>Create a new vet</h3>
+  <form [formGroup]="vetGroup">
     <div class="form-row" >
       <input type="text" pInputText placeholder="First name" formControlName="firstName">
     </div>
@@ -24,6 +24,13 @@
     </div>
     <div class="form-row">
       <input pInputText formControlName="telephone" placeholder="Telephone" />
+    </div>
+    <div class="form-row">
+      <!--input pInputText formControlName="specialty" placeholder="Specialty" /-->
+      <p-dropdown [options]="specialities" placeholder="Specialty" formControlName="specialty"></p-dropdown>
+    </div>
+    <div class="form-row">
+      <p-calendar formControlName="employedSince" placeholder="Employed since" [showIcon]="true"></p-calendar>
     </div>
     <p-button icon="pi pi-check" label="Submit" (click)="onSubmit()"></p-button>&nbsp;
     <button pButton type="reset" label="Reset" class="ui-button-secondary"></button>

@@ -1,0 +1,30 @@
+<p-table [value]="vets">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>City</th>
+      <th>Telephone</th>
+      <th>Email</th>
+      <th>Employed Since</th>
+      <th>Speciality</th>
+      <th></th>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-vet>
+    <tr>
+      <td>{{vet.firstName}}</td>
+      <td>{{vet.lastName}}</td>
+      <td>{{vet.city}}</td>
+      <td>{{vet.telephone}}</td>
+      <td>{{vet.email}}</td>
+      <td>{{vet.employedSince | date}}</td>
+      <td>{{vet.specialty}}</td>
+      <td>
+        <span><a [routerLink]="['edit/'+vet.id]" ><i class="pi pi-pencil"></i></a></span>&nbsp;
+        <span><a (click)="remove(vet.id)"><i class="pi pi-times"></i></a></span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

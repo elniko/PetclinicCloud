@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { Owner } from './model/Owner';
-import { OwnersService } from './owners/owners.service';
+import { Owner } from '../model/Owner';
+import { OwnersService } from './owners.service';
 
 @Injectable({
               providedIn: 'root'
             })
-export class OwnerResolver implements Resolve<Owner>{
+export class OwnersResolver implements Resolve<Owner>{
 
   constructor(private ownersService: OwnersService){
 
@@ -15,9 +15,8 @@ export class OwnerResolver implements Resolve<Owner>{
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Owner> | Promise<Owner> | Owner {
     const id = route.paramMap.get("id");
-    let owner: Owner = this.ownersService.getOwnerById(+id);
-    console.log(owner);
-    return of(owner);
+    return this.ownersService
+        .getOwnerById(+id);
   }
 
 }

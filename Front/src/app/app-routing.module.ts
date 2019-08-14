@@ -1,19 +1,50 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OwnerResolver } from './pet-clinic/OwnerResolver';
 import { CreateOwnerComponent } from './pet-clinic/owners/create-owner/create-owner.component';
 import { ListOwnerComponent } from './pet-clinic/owners/list-owner/list-owner.component';
 import { OwnersComponent } from './pet-clinic/owners/owners.component';
+import { OwnersResolver } from './pet-clinic/owners/owners.resolver';
 import {PetsComponent} from "./pet-clinic/pets/pets.component";
+import { CreateVetComponent } from './pet-clinic/vets/create-vet/create-vet.component';
+import { ListVetComponent } from './pet-clinic/vets/list-vet/list-vet.component';
 import {VetsComponent} from "./pet-clinic/vets/vets.component";
+import { VetsResolver } from './pet-clinic/vets/vets.resolver';
 import { ListVisitComponent } from './pet-clinic/visits/list-visit/list-visit.component';
+import { VisitsComponent } from './pet-clinic/visits/visits.component';
 
 
 const routes: Routes = [
   { path: 'pets', component: PetsComponent },
-  { path: 'vets', component: VetsComponent },
-  { path: 'visits',
-    component: ListVisitComponent,
+  {
+    path: 'vets',
+    component: VetsComponent,
+    children: [
+      {
+        path: '',
+        component: ListVetComponent
+      },
+      {
+        path: 'new',
+        component: CreateVetComponent
+      },
+      {
+        path: 'edit/:id',
+        component: CreateVetComponent,
+        resolve: {
+          vet: VetsResolver
+        }
+      }
+    ]
+  },
+  {
+    path: 'visits',
+    component: VisitsComponent,
+    children: [
+      {
+        path: '',
+        component: ListVisitComponent
+      }
+    ]
 
   },
   { path: 'owners',
@@ -27,7 +58,7 @@ const routes: Routes = [
         path: 'edit/:id',
         component: CreateOwnerComponent,
         resolve: {
-          owner: OwnerResolver
+          owner: OwnersResolver
         }
       },
       {

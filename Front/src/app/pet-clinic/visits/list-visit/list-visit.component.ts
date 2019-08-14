@@ -9,12 +9,8 @@ import { MenuItem } from 'primeng/api';
 export class ListVisitComponent implements OnInit {
 
   constructor() { }
-  items: MenuItem[];
 
   ngOnInit() {
-    this.items = [
-      {label: 'List all visits', icon: 'pi pi-fw pi-list'},
-      {label: 'Create new visit', icon: 'pi pi-fw pi-plus'},
-    ];
+
   }
 }
